@@ -15,7 +15,7 @@ const router = express.Router()
 // INDEX
 // GET /schoolYears
 router.get('/schoolYears', requireToken, (req, res, next) => {
-  SchoolYear.find()
+  SchoolYear.find({'owner': req.user.id})
     .then(schoolYears => {
       return schoolYears.map(schoolYear => schoolYear.toObject())
     })
