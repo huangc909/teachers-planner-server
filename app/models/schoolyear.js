@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
 
-const exampleSchema = new mongoose.Schema({
-  title: {
-    type: String,
+const schoolyearSchema = new mongoose.Schema({
+  startYear: {
+    type: Number,
     required: true
   },
-  text: {
-    type: String,
-    required: true
+  endYear: {
+    type: Number
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -18,4 +17,4 @@ const exampleSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Example', exampleSchema)
+module.exports = mongoose.model('Schoolyear', schoolyearSchema)
