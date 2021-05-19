@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require route files
-const schoolyearRoutes = require('./app/routes/schoolyear_routes')
+const schoolyearRoutes = require('./app/routes/schoolYear_routes')
 const userRoutes = require('./app/routes/user_routes')
 
 // require middleware
