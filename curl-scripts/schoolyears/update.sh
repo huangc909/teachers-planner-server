@@ -9,7 +9,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
 --header "Authorization: Bearer ${TOKEN}" \
 --data '{
-    "schoolyear": {
+    "schoolYear": {
       "startYear": "'"${START}"'",
       "endYear": "'"${END}"'"
     }
