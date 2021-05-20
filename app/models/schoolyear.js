@@ -6,11 +6,11 @@ const schoolYearSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  daysOfYear: [dayOfYear],
   endYear: {
     type: String,
     required: true
   },
+  daysOfYear: [dayOfYear],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
