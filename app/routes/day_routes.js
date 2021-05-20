@@ -11,65 +11,69 @@ const SchoolYear = require('../models/schoolYear')
 
 const router = express.Router()
 
-// GET request for one month
-router.get('/schoolYears/:schoolYearId/months/:monthId', requireToken, (req, res, next) => {
+// GET request for one day
+router.get('/schoolYears/:schoolYearId/months/:monthId/days/:day', requireToken, (req, res, next) => {
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
+  const dayId = req.params.dayId
 
   SchoolYear.findById(schoolYearId)
     .then(handle404)
     .then(schoolYear => {
-      let month = schoolYear.months.id(monthId)
-      month = handle404(month)
-      res.status(200).json({month: month})
+      let day = schoolYear.months.id(monthId).days.id(dayId)
+      day = handle404(day)
+      res.status(200).json({day: day})
     })
     .catch(next)
 })
 
-// POST request for new month
-router.post('/schoolYears/:schoolYearId/months', requireToken, (req, res, next) => {
-  req.body.month.owner = req.user.id
+// POST request for new day
+router.post('/schoolYears/:schoolYearId/months/:monthId/days', requireToken, (req, res, next) => {
+  req.body.day.owner = req.user.id
   const schoolYearId = req.params.schoolYearId
-  const monthData = req.body.month
+  const monthId = req.params.monthId
+  const dayData = req.body.day
 
   SchoolYear.findById(schoolYearId)
     .then(handle404)
     .then(schoolYear => {
-      schoolYear.months.push(monthData)
+      schoolYear.months.id(monthId).days.push(dayData)
       return schoolYear.save()
     })
     .then(schoolYear => res.status(201).json({ schoolYear: schoolYear }))
     .catch(next)
 })
 
-// PATCH request for one month
-router.patch('/schoolYears/:schoolYearId/months/:monthId', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.month.owner
+// PATCH request for one day
+router.patch('/schoolYears/:schoolYearId/months/:monthId/days/:dayId', requireToken, removeBlanks, (req, res, next) => {
+  delete req.body.day.owner
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
-  const monthData = req.body.month
+  const dayId = req.params.dayId
+  const dayData = req.body.day
 
   SchoolYear.findById(schoolYearId)
     .then(handle404)
     .then(schoolYear => {
       requireOwnership(req, schoolYear)
-      schoolYear.months.id(monthId).set(monthData)
+      schoolYear.months.id(monthId).days.id(dayId).set(dayData)
       return schoolYear.save()
     })
     .then(schoolYear => res.status(200).json({ schoolYear: schoolYear }))
     .catch(next)
 })
 
-// DELETE request for one month
-router.delete('/schoolYears/:schoolYearId/months/:monthId', requireToken, (req, res, next) => {
+// DELETE request for one day
+router.delete('/schoolYears/:schoolYearId/months/:monthId/days/:dayId', requireToken, (req, res, next) => {
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
+  const dayId = req.params.dayId
 
   SchoolYear.findById(schoolYearId)
     .then(handle404)
     .then(schoolYear => {
       requireOwnership(req, schoolYear)
-      schoolYear.months.id(monthId).remove()
+      schoolYear.months.id(monthId).days.id(dayId).remove()
       return schoolYear.save()
     })
     .then(() => res.sendStatus(204))

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
-const daySchema = require('./day')
+// const monthSchema = require('./month')
 
-const monthSchema = new mongoose.Schema({
-  month: {
+const categorySchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true
   },
-  days: [daySchema],
+  // months: [monthSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -16,4 +16,4 @@ const monthSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = monthSchema
+module.exports = mongoose.model('Category', categorySchema)

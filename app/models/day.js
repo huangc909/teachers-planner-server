@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
-const daySchema = require('./day')
 
-const monthSchema = new mongoose.Schema({
-  month: {
+const daySchema = new mongoose.Schema({
+  day: {
     type: String,
     required: true
   },
-  days: [daySchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -16,4 +14,4 @@ const monthSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = monthSchema
+module.exports = daySchema

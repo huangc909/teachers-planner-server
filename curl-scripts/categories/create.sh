@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/schoolYears/${SYID}/months"
+URL_PATH="/categories"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -9,8 +9,8 @@ curl "${API}${URL_PATH}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "month": {
-      "month": "'"${MONTH}"'"
+    "category": {
+      "name": "'"${NAME}"'"
     }
   }'
 
