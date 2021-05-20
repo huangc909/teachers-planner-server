@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const dayOfYear = require('./dayOfYear')
+const monthOfYear = require('./monthOfYear')
 
 const schoolYearSchema = new mongoose.Schema({
   startYear: {
@@ -10,7 +10,7 @@ const schoolYearSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  daysOfYear: [dayOfYear],
+  monthsOfYear: [monthOfYear],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

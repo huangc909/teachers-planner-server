@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const dayOfYearSchema = new mongoose.Schema({
-  day: {
+const monthOfYearSchema = new mongoose.Schema({
+  month: {
     type: String,
     required: true
   },
@@ -14,4 +14,4 @@ const dayOfYearSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = dayOfYearSchema
+module.exports = monthOfYearSchema
