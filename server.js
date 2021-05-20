@@ -6,7 +6,7 @@ const cors = require('cors')
 // require route files
 const userRoutes = require('./app/routes/user_routes')
 const schoolYearRoutes = require('./app/routes/schoolYear_routes')
-const monthOfYearRoutes = require('./app/routes/monthOfYear_routes')
+const monthRoutes = require('./app/routes/month_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -59,7 +59,7 @@ app.use(requestLogger)
 // register route files
 app.use(userRoutes)
 app.use(schoolYearRoutes)
-app.use(monthOfYearRoutes)
+app.use(monthRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be

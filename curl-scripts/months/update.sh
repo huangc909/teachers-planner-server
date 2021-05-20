@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/schoolYears/${SYID}/monthsOfYear"
+URL_PATH="/schoolYears/${SYID}/months"
 
 curl "${API}${URL_PATH}/${MONTHID}" \
   --include \
@@ -9,7 +9,7 @@ curl "${API}${URL_PATH}/${MONTHID}" \
   --header "Content-Type: application/json" \
 --header "Authorization: Bearer ${TOKEN}" \
 --data '{
-    "monthOfYear": {
+    "month": {
       "month": "'"${MONTH}"'"
     }
   }'

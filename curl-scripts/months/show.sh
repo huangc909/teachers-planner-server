@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 API="http://localhost:4741"
-URL_PATH="/schoolYears/${SYID}/monthsOfYear"
+URL_PATH="/schoolYears/${SYID}/months"
 
 curl "${API}${URL_PATH}/${MONTHID}" \
   --include \
-  --request DELETE \
+  --request GET \
   --header "Authorization: Bearer ${TOKEN}"
 
 echo

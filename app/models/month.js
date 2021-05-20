@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const monthOfYearSchema = new mongoose.Schema({
+const monthSchema = new mongoose.Schema({
   month: {
     type: String,
     required: true
@@ -14,4 +14,4 @@ const monthOfYearSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = monthOfYearSchema
+module.exports = monthSchema
