@@ -6,6 +6,10 @@ const monthSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  number: {
+    type: Number,
+    required: true
+  },
   days: [daySchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
