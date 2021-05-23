@@ -88,4 +88,23 @@ router.delete('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks/:tas
     .catch(next)
 })
 
+// PATCH request for checkmark
+router.patch('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks/:taskId/checkmark', requireToken, removeBlanks, (req, res, next) => {
+  delete req.body.task.owner
+  const schoolYearId = req.params.schoolYearId
+  const monthId = req.params.monthId
+  const dayId = req.params.dayId
+  const taskId = req.params.taskId
+
+  SchoolYear.findById(schoolYearId)
+    .then(handle404)
+    .then(schoolYear => {
+      requireOwnership(req, schoolYear)
+      schoolYear.months.id(monthId).days.id(dayId).tasks.id(taskId).set(req.body.task)
+      return schoolYear.save()
+    })
+    .then(schoolYear => res.status(204))
+    .catch(next)
+})
+
 module.exports = router
