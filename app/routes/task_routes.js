@@ -30,7 +30,7 @@ router.get('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks/:taskId
 
 // POST request for new task
 router.post('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks', requireToken, (req, res, next) => {
-  req.body.day.owner = req.user.id
+  req.body.task.owner = req.user.id
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
   const dayId = req.params.dayId
@@ -42,13 +42,17 @@ router.post('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks', requ
       schoolYear.months.id(monthId).days.id(dayId).tasks.push(taskData)
       return schoolYear.save()
     })
-    .then(schoolYear => res.status(201).json({ schoolYear: schoolYear }))
+    .then(schoolYear => {
+      let day = schoolYear.months.id(monthId).days.id(dayId)
+      day = handle404(day)
+      res.status(201).json({ day: day })
+    })
     .catch(next)
 })
 
 // PATCH request for one task
 router.patch('/schoolYears/:schoolYearId/months/:monthId/days/:dayId/tasks/:taskId', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.day.owner
+  delete req.body.task.owner
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
   const dayId = req.params.dayId

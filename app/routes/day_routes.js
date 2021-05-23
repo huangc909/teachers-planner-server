@@ -12,7 +12,7 @@ const SchoolYear = require('../models/schoolYear')
 const router = express.Router()
 
 // GET request for one day
-router.get('/schoolYears/:schoolYearId/months/:monthId/days/:day', requireToken, (req, res, next) => {
+router.get('/schoolYears/:schoolYearId/months/:monthId/days/:dayId', requireToken, (req, res, next) => {
   const schoolYearId = req.params.schoolYearId
   const monthId = req.params.monthId
   const dayId = req.params.dayId
