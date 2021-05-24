@@ -32,8 +32,8 @@ Teacher's Planner Server is the backend API for the Teacher's Planner applicatio
 |:-------|:-----------------------------------------------------------|:-------------------|
 | GET    | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId`   | `days#show`        |
 | POST   | `/schoolYears/:schoolYearId/Months/:MonthId/days`          | `days#create`      |
-| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId`    | `days#update`      |
-| DELETE | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId`    | `dats#destroy`     |
+| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId`   | `days#update`      |
+| DELETE | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId`   | `days#destroy`     |
 
 
 ### Tasks
