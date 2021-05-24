@@ -13,7 +13,6 @@ Teacher's Planner Server is the backend API for the Teacher's Planner applicatio
 |:-------|:-------------------------------|:------------------------|
 | GET    | `/schoolYears`                 | `schoolYears#index`     |
 | GET    | `/schoolYears/:schoolYearId`   | `schoolYears#show`      |
-| GET    | `/images/:schoolYearId`        | `images#show`           |
 | POST   | `/schoolYears`                 | `schoolYears#create`    |
 | PATCH  | `/schoolYears/:schoolYearId`   | `schoolYears#update`    |
 | DELETE | `/schoolYears/:schoolYearId`   | `schoolYears#destroy`   |
@@ -40,11 +39,11 @@ Teacher's Planner Server is the backend API for the Teacher's Planner applicatio
 ### Tasks
 | Verb   | URI Pattern                                                                         | Controller#Action  |
 |:-------|:------------------------------------------------------------------------------------|:-------------------|
-| GET    | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId`              | `days#show`        |
-| POST   | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks`                      | `days#create`      |
-| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId`              | `days#update`      |
-| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId/checkmark`    | `days#update`      |
-| DELETE | `/schoolYears/:schoolYearId/Months/:MonthId/sdays/:dayId/tasks/:taskId`             | `dats#destroy`     |
+| GET    | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId`              | `tasks#show`        |
+| POST   | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks`                      | `tasks#create`      |
+| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId`              | `tasks#update`      |
+| PATCH  | `/schoolYears/:schoolYearId/Months/:MonthId/days/:dayId/tasks/:taskId/checkmark`    | `tasks#update`      |
+| DELETE | `/schoolYears/:schoolYearId/Months/:MonthId/sdays/:dayId/tasks/:taskId`             | `tasks#destroy`     |
 
 ## ERD
 (coming soon)
