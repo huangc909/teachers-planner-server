@@ -46,4 +46,4 @@ Teacher's Planner Server is the backend API for the Teacher's Planner applicatio
 | DELETE | `/schoolYears/:schoolYearId/Months/:MonthId/sdays/:dayId/tasks/:taskId`             | `tasks#destroy`     |
 
 ## ERD
-(coming soon)
+![teachers-planner-erd](https://user-images.githubusercontent.com/53062479/119353736-4337f880-bc71-11eb-8d35-3e7c4b6b1b45.png)
